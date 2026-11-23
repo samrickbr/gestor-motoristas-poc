@@ -7,6 +7,205 @@
   box-sizing: border-box;
 }
 
+.demo-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.demo-nav button {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  color: #334155;
+  background: #fff;
+  cursor: pointer;
+}
+
+.demo-nav button[aria-pressed="true"] {
+  color: #fff;
+  border-color: #0f172a;
+  background: #0f172a;
+}
+
+.finance-actions,
+.finance-balances {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.finance-actions .button { margin-top: 0; }
+
+.finance-balances div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.finance-balances strong { color: #0f172a; }
+
+.concurrency-panel {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.concurrency-scenarios {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.concurrency-scenario {
+  padding: 16px;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.concurrency-scenario-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.concurrency-scenario h3,
+.concurrency-integrity h3 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 15px;
+}
+
+.concurrency-scenario-heading p {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.concurrency-scenario-heading .button,
+.concurrency-integrity .button {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.concurrency-run {
+  padding-top: 12px;
+}
+
+.concurrency-run > small {
+  color: #64748b;
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+
+.concurrency-run ul,
+.concurrency-checks {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  margin: 10px 0 0;
+  list-style: none;
+}
+
+.concurrency-run li {
+  display: grid;
+  grid-template-columns: auto minmax(100px, auto) 1fr;
+  align-items: start;
+  gap: 8px;
+  color: #475569;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.concurrency-run li strong {
+  color: #334155;
+}
+
+.concurrency-outcome {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.outcome-sucesso { color: #15803d; }
+.outcome-duplicata { color: #1d4ed8; }
+.outcome-rejeição { color: #a16207; }
+.outcome-falha { color: #b91c1c; }
+
+.concurrency-integrity {
+  padding-top: 20px;
+  margin-top: 22px;
+  border-top: 1px solid #fde68a;
+}
+
+.concurrency-integrity .section-heading {
+  align-items: center;
+}
+
+.concurrency-integrity .section-heading h3 {
+  margin-top: 6px;
+}
+
+.concurrency-counts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.concurrency-counts div {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.concurrency-counts span,
+.concurrency-counts strong {
+  display: block;
+}
+
+.concurrency-counts span {
+  color: #64748b;
+  font-size: 10px;
+}
+
+.concurrency-counts strong {
+  margin-top: 4px;
+  color: #0f172a;
+  font-size: 15px;
+}
+
+.concurrency-sequences {
+  margin: 14px 0 0;
+  color: #475569;
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.concurrency-checks {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  color: #166534;
+  font-size: 10px;
+}
+
+.checks-failed { color: #b91c1c; }
+
+@media (min-width: 600px) {
+  .finance-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 .header {
   margin-bottom: 28px;
 }
@@ -297,5 +496,39 @@
 
   .record-item {
     align-items: flex-start;
+  }
+
+  .concurrency-scenario-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .concurrency-scenario-heading .button {
+    width: 100%;
+  }
+
+  .concurrency-run li {
+    grid-template-columns: auto 1fr;
+  }
+
+  .concurrency-run li > span:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .concurrency-counts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .concurrency-integrity .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .concurrency-integrity .button {
+    width: 100%;
+  }
+
+  .concurrency-checks {
+    grid-template-columns: 1fr;
   }
 }

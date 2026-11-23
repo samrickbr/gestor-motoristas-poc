@@ -1,3 +1,4 @@
+import { createUuidV4 } from '../utils/uuid'
 
 export interface TestRecord {
   id: string
@@ -112,7 +113,7 @@ export async function saveRecord(
   description: string,
 ): Promise<void> {
   const record: TestRecord = {
-    id: crypto.randomUUID(),
+    id: createUuidV4(),
     description,
     createdAt: new Date().toISOString(),
   }

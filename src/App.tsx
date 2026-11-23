@@ -9,6 +9,7 @@ import {
   type TestRecord,
 } from './storage/indexedDb'
 import './App.css'
+import FinanceDemo from './finance/demo/FinanceDemo'
 
 function formatDate(value: string): string {
   return new Intl.DateTimeFormat('pt-BR', {
@@ -25,7 +26,7 @@ function formatBytes(value: number | null): string {
   }).format(value / 1024 / 1024) + ' MB'
 }
 
-function App() {
+function StorageDemo() {
   const [description, setDescription] = useState('')
   const [records, setRecords] = useState<TestRecord[]>([])
   const [persisted, setPersisted] = useState<boolean | null>(null)
@@ -298,6 +299,20 @@ function App() {
         <span>Os dados permanecem neste navegador e nesta origem.</span>
       </footer>
     </main>
+  )
+}
+
+function App() {
+  const [view, setView] = useState<'poc02' | 'poc03'>('poc03')
+
+  return (
+    <>
+      <nav className="demo-nav" aria-label="Demonstrações">
+        <button type="button" aria-pressed={view === 'poc03'} onClick={() => setView('poc03')}>POC-03 · Diário financeiro</button>
+        <button type="button" aria-pressed={view === 'poc02'} onClick={() => setView('poc02')}>POC-02 · Persistência local</button>
+      </nav>
+      {view === 'poc03' ? <FinanceDemo /> : <StorageDemo />}
+    </>
   )
 }
 
